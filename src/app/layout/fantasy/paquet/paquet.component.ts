@@ -3,7 +3,7 @@ import { routerTransition } from '../../../router.animations';
 import { NgModel } from '@angular/forms';
 import { DataService } from '../../../_services/data.service';
 import { Router } from '@angular/router';
-import { async } from '@angular/core/testing';
+import { waitForAsync } from '@angular/core/testing';
 
 @Component({
   selector: 'app-paquet',
