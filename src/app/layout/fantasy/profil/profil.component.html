@@ -5,14 +5,87 @@
   <br>
   <br>
 
-  <h5>Choisir la ligue :</h5>
+  <br>
+  <h3>Roster de {{this.pseudo}} pour la ligue {{this.ligue}}</h3>
+ 
+  <div *ngIf="!vueDetail">
+
+    <br>
+    <br>
+
   <div class="row">
-  <div class="col-lg-2">
-  <select [(ngModel)]="ligue" (ngModelChange)="selectionChange($event)" class="form-control">
-          <option value="JCS">Ligue 1</option>
-          <option value="Acad">Académie</option>
-  </select>
+    <div *ngFor="let item of roster; let i = index" class="col col-sm-2">
+      <div class="card mb-3">
+          <div class="card-header">        
+              <p class="text-left"><b>{{item.nom_carte}} - {{item.poste}} - {{listeRarete[item.rarete_carte]}}</b></p>
+          </div>
+          <div class="card-body">
+              <img [src]="urlServer+item.image" width="100%" height="100%">
+          </div>  
+          <div class="card-footer">
+            <div class="row">
+              <div class="col-lg-6">
+              <button class="btn btn-info btn-sm" (click)="gotoDetails(item)" >Voir Détail</button>      
+              </div>    
+              <div *ngIf="item.nature_carte == 1 || item.nature_carte == 2" class="col-lg-6">
+                <h6> Score : {{item.score}}</h6>  
+              </div>    
+              </div>
+        </div>      
+      </div>     
+   </div>
   </div>
+</div>
+
+<div *ngIf="vueDetail">
+  <br>
+  <br>
+
+  <div class="row">
+  <div class="col-lg-6">
+    <h4><b>{{selectedItem.nom_carte}} - {{selectedItem.poste}} - {{listeRarete[selectedItem.rarete_carte]}}</b></h4>
+    <button class="btn btn-danger" (click)="goBack()" >Retour</button>                     
+  </div>
+  </div>
+  <br>
+  <h6> Score : {{selectedItem.score}}</h6>  
+  <br>
+
+  <div *ngIf="selectedItem.nature_carte == 1"> 
+  <div class="row">
+    <div *ngIf="selectedItem.rarete_carte > 1" class="col-lg-2">
+      <label>Item 1 :</label>
+      <select [(ngModel)]="selectedItem.item_1_id" class="form-control">
+              <option value="0">-- Pas d'item --</option>
+              <option *ngFor="let unit of listeItem; let i = index" value="{{unit.id_carte}}">{{unit.nom_carte}}</option>
+      </select>
+    </div>
+    <div *ngIf="selectedItem.rarete_carte > 2" class="col-lg-2">
+      <label>Item 2 :</label>
+      <select [(ngModel)]="selectedItem.item_2_id" class="form-control">
+              <option value="0">-- Pas d'item --</option>
+              <option *ngFor="let unit of listeItem; let i = index" value="{{unit.id_carte}}">{{unit.nom_carte}}</option>
+      </select>
+    </div>
+    <div *ngIf="selectedItem.rarete_carte > 3" class="col-lg-2">
+      <label>Item 3 :</label>
+      <select [(ngModel)]="selectedItem.item_3_id" class="form-control">
+              <option value="0">-- Pas d'item --</option>
+              <option *ngFor="let unit of listeItem; let i = index" value="{{unit.id_carte}}">{{unit.nom_carte}}</option>
+      </select>
+    </div>
+  </div>
+  <br>
+  </div>
+
+  <br>
+  <br>
+  <div class="row">
+    <div class="col-lg-4">
+      <img [src]="urlServer+selectedItem.image" width="100%" height="100%">
+    </div>
+  </div>
+</div>
 
 
 </div>

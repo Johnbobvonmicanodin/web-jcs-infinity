@@ -490,6 +490,16 @@ export class DataService {
         }).catch (this.handleError).toPromise();
     }
 
+    getAllSession(ligue,saison){
+        const json = {"ligue": ligue, "saison": saison};
+        return this.authHttp.post(this._apiURL + 'fantasy/getallsession', json)
+        .map(res => res.json())
+        .map(data => {
+            return data;
+        }).catch (this.handleError).toPromise();
+    }
+
+
     getScore(id_compte, id_session){
         const json = {"id_compte": id_compte,"id_session" : id_session};
         return this.authHttp.post(this._apiURL + 'fantasy/getscore', json)
@@ -499,14 +509,34 @@ export class DataService {
         }).catch (this.handleError).toPromise();
     }
 
-    getAllScore(id_compte){
+    getAllScoreCompte(id_compte){
         const json = {"id_compte": id_compte};
+        return this.authHttp.post(this._apiURL + 'fantasy/getallscorecompte', json)
+        .map(res => res.json())
+        .map(data => {
+            return data;
+        }).catch (this.handleError).toPromise();
+    }
+
+    getAllScore(session, ligue, saison){
+        const json = {"session": session, "ligue": ligue, "saison": saison};
         return this.authHttp.post(this._apiURL + 'fantasy/getallscore', json)
         .map(res => res.json())
         .map(data => {
             return data;
         }).catch (this.handleError).toPromise();
     }
+
+    getAllScoreTotal(ligue, saison){
+        const json = {"ligue": ligue, "saison": saison};
+        return this.authHttp.post(this._apiURL + 'fantasy/getallscoretotal', json)
+        .map(res => res.json())
+        .map(data => {
+            return data;
+        }).catch (this.handleError).toPromise();
+    }
+
+
 
     addCardPlayer(id_compte, id_carte, ligue, saison){
         const json = {"id_compte": id_compte,"id_carte" : id_carte,"ligue" : ligue,"saison" : saison};
@@ -583,7 +613,6 @@ export class DataService {
             return data;
         }).catch (this.handleError).toPromise();
     }
-
 
     /*
     * JCS

@@ -20,18 +20,18 @@
                 <div class="col-lg-2">
                     <label>Structure :</label>
                     <select [(ngModel)]="choixEquipe" class="form-control">
-                            <option value="65">Barbateam/Bagarre</option>
-                            <option value="66">WaffenBoomers/WaffenRongeurs</option>
-                            <option value="67">BandeOrganisé/SingesOrganisés</option>
-                            <option value="68">Karasununu/RideMyJumanji</option>   
-                            <option value="69">La5eB/PoupiFanClub</option>
-                            <option value="70">InstagramGaming/Yopelait</option>
-                            <option value="71">ToutNiké/CampingDesLilas</option>
-                            <option value="72">Shelby/TeamManufacture</option>
-                            <option value="73">LesCopains/QueLesAmis</option>
-                            <option value="74">HamsterDame/Scofield</option>
-                            <option value="900">Bac à sub L1</option>   
-                            <option value="901">Bac à sub Acad</option>             
+                            <option value="75">VIP/GG GTIER</option>
+                            <option value="76">La secte de l'esport/Hippopoggers</option>
+                            <option value="77">La brigade fantôme/Sholden Ghower</option>
+                            <option value="78">Nathell Team/Slow Bros</option>   
+                            <option value="79">Sun Tzu Warriors/Riz au Zoo</option>
+                            <option value="80">Ruthless/Revengers</option>
+                            <option value="81">Le J C le S /Majestic Disco Chickens</option>
+                            <option value="82">Allah's Warriors/Les Zinzins de l'acad</option>
+                            <option value="83">Division Peepo/Big Bangerino Esport Club</option>
+                            <option value="84">BOUGNA/ISSOU</option>              
+                            <option value="1000">Bac à sub L1</option>   
+                            <option value="1001">Bac à sub Acad</option>             
                     </select>
                 </div>
                 <div class="col-lg-2">
@@ -179,9 +179,35 @@
                 <button type="button" *ngIf="peutResoudreSession" (click)="resoudreSession()" class="form-control btn btn-primary">Bug à volonté</button>
             </div>
         </div>
-  
+        
         <br>
         <p>---------------------------------------------------------------------</p>
+
+        <br>
+        
+        <h6>Ajouter argent de la semaine :</h6>
+        <br>
+        <div class="row">           
+            <div class="col-lg-2">
+                <label>ID Session :</label>
+                <input id="idsession" [(ngModel)]="idSession"  class="form-control" type="text"/>   
+            </div>
+            <div class="col-lg-2">
+                <label>Semaine session :</label>
+                <input id="semaineSession" [(ngModel)]="semaineFantasy"  class="form-control" type="text"/>   
+            </div>
+            <div class="col-lg-2">
+                <label>Ligue :</label>
+                <select [(ngModel)]="ligueFantasy" class="form-control">
+                        <option value="JCS">JCS</option>
+                        <option value="Acad">Acad</option>
+                </select>
+            </div>    
+            <div class="col-lg-2">
+                <label>Ajout JC$ :</label>
+                <button type="button" *ngIf="peutResoudreSession" (click)="ajoutArgent()" class="form-control btn btn-primary">Filer la thune</button>
+            </div>
+        </div>
 
         <!--<div class="row">
                 <div class="col-lg-6">

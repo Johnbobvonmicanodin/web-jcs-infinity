@@ -42,7 +42,7 @@ export class AdminComponent implements OnInit {
     choixRarete = '';
     pseudoJoueur = '';
     pseudoJoueurLOL = '';
-    saison = '9';
+    saison = '10';
 
     choixNature = '';
     nomItem = '';
@@ -50,7 +50,7 @@ export class AdminComponent implements OnInit {
 
     idSession = 0;
     ligueFantasy = "JCS";
-    saisonFantasy = 9;
+    saisonFantasy = 10;
     semaineFantasy = 0;
 
     selectionPari = false;
@@ -233,6 +233,32 @@ export class AdminComponent implements OnInit {
                     }
                 });
             }
+        });
+    } 
+
+    ajoutArgent()
+    {
+        this.dataService.getAllScore(this.idSession, this.ligueFantasy, this.saison).then(data => { 
+            
+            var i = 0;
+            
+            data.forEach(item => {
+
+                i++;
+
+                if(i == 1)
+                {
+                    this.dataService.plusMoney(150, item.uti_id);
+                }
+                else if(i >1 && i < 11)
+                {
+                    this.dataService.plusMoney(100, item.uti_id);
+                }
+                else if(i > 11 && i < 20)
+                {
+                    this.dataService.plusMoney(50, item.uti_id);
+                }       
+            });   
         });
     }
 }
